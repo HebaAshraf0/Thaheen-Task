@@ -5,22 +5,22 @@ class AppScaffold extends StatelessWidget {
   const AppScaffold({
     required this.title,
     required this.body,
+    this.showBackButton = false,
     super.key,
   });
 
   final String title;
   final Widget body;
+  final bool showBackButton;
 
   @override
   Widget build(BuildContext context) {
-    final canPop = Navigator.of(context).canPop();
-
     return Scaffold(
       drawer: const AppSettingsDrawer(),
       appBar: AppBar(
         title: Text(title),
-        leading: canPop ? const BackButton() : null,
-        actions: canPop
+        leading: showBackButton ? const BackButton() : const DrawerButton(),
+        actions: showBackButton
             ? [
                 Builder(
                   builder: (drawerContext) => IconButton(

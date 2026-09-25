@@ -28,14 +28,30 @@ class AppSettingsDrawer extends StatelessWidget {
               children: [
                 DrawerHeader(
                   decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.primaryContainer,
+                    gradient: LinearGradient(
+                      begin: AlignmentDirectional.topStart,
+                      end: AlignmentDirectional.bottomEnd,
+                      colors: [
+                        Theme.of(context).colorScheme.primaryContainer,
+                        Theme.of(context).colorScheme.surfaceContainerLow,
+                      ],
+                    ),
                   ),
                   child: Row(
                     children: [
-                      Icon(
-                        Icons.school_rounded,
-                        size: 36.sp,
-                        color: Theme.of(context).colorScheme.primary,
+                      Container(
+                        width: 52.r,
+                        height: 52.r,
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.primary,
+                          shape: BoxShape.circle,
+                        ),
+                        alignment: Alignment.center,
+                        child: Icon(
+                          Icons.school_rounded,
+                          size: 28.r,
+                          color: Theme.of(context).colorScheme.onPrimary,
+                        ),
                       ),
                       SizedBox(width: 12.w),
                       Expanded(

@@ -30,6 +30,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get coursesTitle => 'Courses';
 
   @override
+  String get coursesSubtitle => 'Learn at your own pace, wherever you are';
+
+  @override
+  String get courseContent => 'Course content';
+
+  @override
   String get courseDetailsTitle => 'Course details';
 
   @override

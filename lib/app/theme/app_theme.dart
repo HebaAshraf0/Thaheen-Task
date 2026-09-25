@@ -108,10 +108,10 @@ abstract final class AppTheme {
       ),
       cardTheme: CardThemeData(
         margin: EdgeInsets.zero,
-        elevation: 0,
+        elevation: 1,
         color: colorScheme.surfaceContainerLow,
         surfaceTintColor: Colors.transparent,
-        shadowColor: colorScheme.shadow.withValues(alpha: 0.08),
+        shadowColor: colorScheme.shadow.withValues(alpha: 0.10),
         clipBehavior: Clip.antiAlias,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16.r),

@@ -30,6 +30,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get coursesTitle => 'الدورات';
 
   @override
+  String get coursesSubtitle => 'تعلّم بالسرعة التي تناسبك، أينما كنت';
+
+  @override
+  String get courseContent => 'محتوى الدورة';
+
+  @override
   String get courseDetailsTitle => 'تفاصيل الدورة';
 
   @override

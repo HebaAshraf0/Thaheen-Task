@@ -97,7 +97,7 @@ class AppText extends StatelessWidget {
           color: colorScheme.onSurfaceVariant,
         ),
       _AppTextVariant.action => AppTextStyles.action.copyWith(
-          color: colorScheme.primary,
+          color: colorScheme.onPrimaryContainer,
         ),
     };
 

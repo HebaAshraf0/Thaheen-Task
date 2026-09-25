@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:thaheen_task/core/extensions/context_extensions.dart';
+import 'package:thaheen_task/core/widgets/app_text.dart';
 import 'package:thaheen_task/features/learning/domain/entities/course.dart';
 import 'package:thaheen_task/features/learning/presentation/widgets/course_progress_indicator.dart';
 
@@ -21,11 +22,12 @@ class CourseCard extends StatelessWidget {
     return Card(
       child: InkWell(
         onTap: onTap,
+        borderRadius: BorderRadius.circular(16.r),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             AspectRatio(
-              aspectRatio: 16 / 7,
+              aspectRatio: 16 / 9,
               child: Image.asset(
                 course.thumbnailAssetPath,
                 fit: BoxFit.cover,
@@ -36,32 +38,80 @@ class CourseCard extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+              padding: EdgeInsets.fromLTRB(16.w, 16.h, 16.w, 14.h),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    course.title,
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
-                  SizedBox(height: 4.h),
-                  Text(
-                    course.instructor,
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: Theme.of(context).colorScheme.onSurfaceVariant,
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: AppText.primary(
+                          course.title,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: Theme.of(context).textTheme.titleMedium,
                         ),
+                      ),
+                      SizedBox(width: 12.w),
+                      Container(
+                        width: 36.r,
+                        height: 36.r,
+                        decoration: BoxDecoration(
+                          color: Theme.of(
+                            context,
+                          ).colorScheme.primaryContainer,
+                          shape: BoxShape.circle,
+                        ),
+                        alignment: Alignment.center,
+                        child: Icon(
+                          Icons.arrow_forward_rounded,
+                          size: 20.r,
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
+                      ),
+                    ],
                   ),
                   SizedBox(height: 8.h),
-                  Text(context.l10n.lessonsCount(course.lessonCount)),
-                  SizedBox(height: 12.h),
-                  CourseProgressIndicator(percentage: progressPercentage),
-                  SizedBox(height: 6.h),
-                  Text(
-                    context.l10n.progressPercentage(progressPercentage.round()),
-                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          color: Theme.of(context).colorScheme.onSurfaceVariant,
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.person_outline_rounded,
+                        size: 18.r,
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
+                      ),
+                      SizedBox(width: 6.w),
+                      Expanded(
+                        child: AppText.secondary(
+                          course.instructor,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                         ),
+                      ),
+                    ],
                   ),
+                  SizedBox(height: 14.h),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.play_circle_outline_rounded,
+                        size: 18.r,
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                      SizedBox(width: 6.w),
+                      AppText.secondary(
+                        context.l10n.lessonsCount(course.lessonCount),
+                      ),
+                      const Spacer(),
+                      AppText.action(
+                        context.l10n.progressPercentage(
+                          progressPercentage.round(),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10.h),
+                  CourseProgressIndicator(percentage: progressPercentage),
                 ],
               ),
             ),

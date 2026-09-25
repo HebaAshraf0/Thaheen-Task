@@ -140,6 +140,18 @@ abstract class AppLocalizations {
   /// **'الدورات'**
   String get coursesTitle;
 
+  /// No description provided for @coursesSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعلّم بالسرعة التي تناسبك، أينما كنت'**
+  String get coursesSubtitle;
+
+  /// No description provided for @courseContent.
+  ///
+  /// In ar, this message translates to:
+  /// **'محتوى الدورة'**
+  String get courseContent;
+
   /// No description provided for @courseDetailsTitle.
   ///
   /// In ar, this message translates to:
