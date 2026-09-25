@@ -1,0 +1,92 @@
+{
+  "courses": [
+    {
+      "id": "anatomy-101",
+      "title": "مقدمة في علم التشريح",
+      "instructor": "د. أحمد محمود",
+      "thumbnail": "assets/images/course_thumbnails/anatomy.png",
+      "sections": [
+        {
+          "id": "anatomy-section-1",
+          "title": "الجهاز الهيكلي",
+          "lessons": [
+            {
+              "id": "anatomy-lesson-1",
+              "title": "مقدمة عن العظام",
+              "durationSeconds": 120,
+              "videoAsset": "assets/videos/lesson_1.mp4"
+            },
+            {
+              "id": "anatomy-lesson-2",
+              "title": "أنواع العظام",
+              "durationSeconds": 150,
+              "videoAsset": "assets/videos/lesson_2.mp4"
+            }
+          ]
+        },
+        {
+          "id": "anatomy-section-2",
+          "title": "الجهاز العضلي",
+          "lessons": [
+            {
+              "id": "anatomy-lesson-3",
+              "title": "تركيب العضلات",
+              "durationSeconds": 180,
+              "videoAsset": "assets/videos/lesson_3.mp4"
+            },
+            {
+              "id": "anatomy-lesson-4",
+              "title": "حركة العضلات",
+              "durationSeconds": 140,
+              "videoAsset": "assets/videos/lesson_1.mp4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "physiology-101",
+      "title": "أساسيات علم وظائف الأعضاء",
+      "instructor": "د. سارة علي",
+      "thumbnail": "assets/images/course_thumbnails/physiology.png",
+      "sections": [
+        {
+          "id": "physiology-section-1",
+          "title": "الدورة الدموية",
+          "lessons": [
+            {
+              "id": "physiology-lesson-1",
+              "title": "وظائف القلب",
+              "durationSeconds": 160,
+              "videoAsset": "assets/videos/lesson_2.mp4"
+            },
+            {
+              "id": "physiology-lesson-2",
+              "title": "الأوعية الدموية",
+              "durationSeconds": 170,
+              "videoAsset": "assets/videos/lesson_3.mp4"
+            }
+          ]
+        },
+        {
+          "id": "physiology-section-2",
+          "title": "الجهاز التنفسي",
+          "lessons": [
+            {
+              "id": "physiology-lesson-3",
+              "title": "آلية التنفس",
+              "durationSeconds": 135,
+              "videoAsset": "assets/videos/lesson_1.mp4"
+            },
+            {
+              "id": "physiology-lesson-4",
+              "title": "تبادل الغازات",
+              "durationSeconds": 155,
+              "videoAsset": "assets/videos/lesson_2.mp4"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

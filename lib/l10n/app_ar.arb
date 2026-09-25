@@ -1,0 +1,20 @@
+{
+  "@@locale": "ar",
+  "appTitle": "ذهين",
+  "coursesTitle": "الدورات",
+  "courseDetailsTitle": "تفاصيل الدورة",
+  "lessonPlayerTitle": "مشغل الدرس",
+  "noCourses": "لا توجد دورات متاحة حاليًا",
+  "courseNotFound": "تعذر العثور على هذه الدورة",
+  "loadError": "تعذر تحميل المحتوى",
+  "retry": "إعادة المحاولة",
+  "lessonsCount": "{count, plural, =0{لا توجد دروس} =1{درس واحد} =2{درسان} few{{count} دروس} many{{count} درسًا} other{{count} درس}}",
+  "progressPercentage": "{percentage}% مكتمل",
+  "continueWatching": "متابعة المشاهدة",
+  "notStarted": "لم يبدأ",
+  "inProgress": "قيد التقدم",
+  "completed": "مكتمل",
+  "lockedLessonMessage": "أكمل الدرس السابق لفتح هذا الدرس",
+  "videoUnavailable": "تعذر تشغيل ملف الفيديو",
+  "screenComingSoon": "تم تجهيز بنية هذه الشاشة للتنفيذ"
+}

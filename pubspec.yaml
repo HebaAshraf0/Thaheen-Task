@@ -1,0 +1,93 @@
+name: thaheen_task
+description: "Thaheen mini offline LMS screening task."
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.8.0
+
+dependencies:
+  # Flutter SDK used to build the application UI and platform integrations.
+  flutter:
+    sdk: flutter
+
+  # Official Flutter localization delegates for Arabic and English Material UI.
+  flutter_localizations:
+    sdk: flutter
+
+  # Locale-aware formatting and localization utilities.
+  intl: ^0.20.2
+
+  # Bloc and Cubit widgets used for presentation state management.
+  flutter_bloc: ^9.1.1
+
+  # Value-based equality for entities, failures, and Cubit states.
+  equatable: ^3.0.0
+
+  # Functional Either type used for explicit failure and success results.
+  dartz: ^0.10.1
+
+  # Service locator used as the dependency injection container.
+  get_it: ^9.3.0
+
+  # Annotation-based dependency registration for GetIt.
+  injectable: ^3.0.0
+
+  # Declarative navigation between course, details, and player screens.
+  go_router: ^17.0.0
+
+  # Low-level playback engine for bundled MP4 lesson assets.
+  video_player: ^2.11.1
+
+  # Ready-made video controls, playback speeds, and fullscreen support.
+  chewie: ^1.15.0
+
+  # Local key-value persistence for lesson positions and completion state.
+  shared_preferences: ^2.5.5
+
+  # Annotations used to generate JSON serialization for data models.
+  json_annotation: ^4.12.0
+
+  # Adapts dimensions, spacing, radii, and typography to the screen size.
+  flutter_screenutil: ^5.9.3
+
+dev_dependencies:
+  # Flutter SDK testing framework for unit and widget tests.
+  flutter_test:
+    sdk: flutter
+
+  # Official recommended static-analysis rules for Flutter projects.
+  flutter_lints: ^6.0.0
+
+  # Runs source generators for JSON serialization and dependency injection.
+  build_runner: ^2.15.1
+
+  # Generates GetIt registrations from Injectable annotations.
+  injectable_generator: ^3.0.0
+
+  # Generates fromJson and toJson implementations for data models.
+  json_serializable: ^6.14.1
+
+  # Test helpers for asserting Bloc and Cubit state sequences.
+  bloc_test: ^10.0.0
+
+  # Lightweight mocking library used in repository and use-case tests.
+  mocktail: ^1.0.5
+
+  # Generates native Android and iOS launcher icons from one source image.
+  flutter_launcher_icons: ^0.14.4
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: assets/images/app_icon/thaheen_app_icon.png
+  min_sdk_android: 21
+  remove_alpha_ios: true
+
+flutter:
+  uses-material-design: true
+  generate: true
+  assets:
+    - assets/data/
+    - assets/images/course_thumbnails/
+    - assets/videos/

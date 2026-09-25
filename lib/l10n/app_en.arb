@@ -1,0 +1,20 @@
+{
+  "@@locale": "en",
+  "appTitle": "Thaheen",
+  "coursesTitle": "Courses",
+  "courseDetailsTitle": "Course details",
+  "lessonPlayerTitle": "Lesson player",
+  "noCourses": "No courses are currently available",
+  "courseNotFound": "This course could not be found",
+  "loadError": "The content could not be loaded",
+  "retry": "Retry",
+  "lessonsCount": "{count, plural, =0{No lessons} =1{1 lesson} other{{count} lessons}}",
+  "progressPercentage": "{percentage}% complete",
+  "continueWatching": "Continue watching",
+  "notStarted": "Not started",
+  "inProgress": "In progress",
+  "completed": "Completed",
+  "lockedLessonMessage": "Complete the previous lesson to unlock this lesson",
+  "videoUnavailable": "The video file could not be played",
+  "screenComingSoon": "This screen structure is ready for implementation"
+}
