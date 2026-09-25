@@ -98,6 +98,36 @@ abstract class AppLocalizations {
     Locale('en'),
   ];
 
+  /// No description provided for @settings.
+  ///
+  /// In ar, this message translates to:
+  /// **'الإعدادات'**
+  String get settings;
+
+  /// No description provided for @darkMode.
+  ///
+  /// In ar, this message translates to:
+  /// **'الوضع الداكن'**
+  String get darkMode;
+
+  /// No description provided for @language.
+  ///
+  /// In ar, this message translates to:
+  /// **'اللغة'**
+  String get language;
+
+  /// No description provided for @arabic.
+  ///
+  /// In ar, this message translates to:
+  /// **'العربية'**
+  String get arabic;
+
+  /// No description provided for @english.
+  ///
+  /// In ar, this message translates to:
+  /// **'الإنجليزية'**
+  String get english;
+
   /// No description provided for @appTitle.
   ///
   /// In ar, this message translates to:

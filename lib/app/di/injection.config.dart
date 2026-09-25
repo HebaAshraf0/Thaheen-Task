@@ -51,6 +51,22 @@ import '../../features/learning/presentation/cubits/courses/courses_cubit.dart'
     as _i1065;
 import '../../features/learning/presentation/cubits/lesson_player/lesson_player_cubit.dart'
     as _i273;
+import '../../features/settings/data/datasources/settings_local_data_source.dart'
+    as _i599;
+import '../../features/settings/data/datasources/settings_local_data_source_impl.dart'
+    as _i162;
+import '../../features/settings/data/repositories/settings_repository_impl.dart'
+    as _i955;
+import '../../features/settings/domain/repositories/settings_repository.dart'
+    as _i674;
+import '../../features/settings/domain/use_cases/get_app_settings_use_case.dart'
+    as _i599;
+import '../../features/settings/domain/use_cases/save_language_use_case.dart'
+    as _i993;
+import '../../features/settings/domain/use_cases/save_theme_preference_use_case.dart'
+    as _i700;
+import '../../features/settings/presentation/cubits/app_settings/app_settings_cubit.dart'
+    as _i684;
 import 'register_module.dart' as _i291;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -81,6 +97,22 @@ extension GetItInjectableX on _i174.GetIt {
       () =>
           _i487.ProgressLocalDataSourceImpl(gh<_i460.SharedPreferencesAsync>()),
     );
+    gh.lazySingleton<_i599.SettingsLocalDataSource>(
+      () =>
+          _i162.SettingsLocalDataSourceImpl(gh<_i460.SharedPreferencesAsync>()),
+    );
+    gh.lazySingleton<_i674.SettingsRepository>(
+      () => _i955.SettingsRepositoryImpl(gh<_i599.SettingsLocalDataSource>()),
+    );
+    gh.factory<_i599.GetAppSettingsUseCase>(
+      () => _i599.GetAppSettingsUseCase(gh<_i674.SettingsRepository>()),
+    );
+    gh.factory<_i993.SaveLanguageUseCase>(
+      () => _i993.SaveLanguageUseCase(gh<_i674.SettingsRepository>()),
+    );
+    gh.factory<_i700.SaveThemePreferenceUseCase>(
+      () => _i700.SaveThemePreferenceUseCase(gh<_i674.SettingsRepository>()),
+    );
     gh.lazySingleton<_i888.ProgressRepository>(
       () => _i997.ProgressRepositoryImpl(gh<_i668.ProgressLocalDataSource>()),
     );
@@ -107,6 +139,13 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i915.GetCourseUseCase>(),
         gh<_i169.GetNextLessonUseCase>(),
         gh<_i497.IsLessonUnlockedUseCase>(),
+      ),
+    );
+    gh.factory<_i684.AppSettingsCubit>(
+      () => _i684.AppSettingsCubit(
+        gh<_i599.GetAppSettingsUseCase>(),
+        gh<_i700.SaveThemePreferenceUseCase>(),
+        gh<_i993.SaveLanguageUseCase>(),
       ),
     );
     gh.factory<_i273.LessonPlayerCubit>(

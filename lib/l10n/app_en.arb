@@ -1,6 +1,11 @@
 {
   "@@locale": "en",
   "appTitle": "Thaheen",
+  "settings": "Settings",
+  "darkMode": "Dark mode",
+  "language": "Language",
+  "arabic": "Arabic",
+  "english": "English",
   "coursesTitle": "Courses",
   "courseDetailsTitle": "Course details",
   "lessonPlayerTitle": "Lesson player",

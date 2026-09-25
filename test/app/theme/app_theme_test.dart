@@ -6,7 +6,7 @@ import 'package:thaheen_task/app/theme/app_screen_config.dart';
 import 'package:thaheen_task/app/theme/app_theme.dart';
 
 void main() {
-  testWidgets('light theme uses the Thaheen website palette', (tester) async {
+  testWidgets('light theme uses the baby-blue neutral palette', (tester) async {
     final theme = await _pumpTheme(tester, () => AppTheme.light);
 
     expect(theme.brightness, Brightness.light);
@@ -19,7 +19,7 @@ void main() {
     );
   });
 
-  testWidgets('dark theme uses the Thaheen dark palette', (tester) async {
+  testWidgets('dark theme uses the deep-ocean palette', (tester) async {
     final theme = await _pumpTheme(tester, () => AppTheme.dark);
 
     expect(theme.brightness, Brightness.dark);

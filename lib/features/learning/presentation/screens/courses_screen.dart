@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:thaheen_task/app/di/injection.dart';
 import 'package:thaheen_task/app/router/route_paths.dart';
+import 'package:thaheen_task/app/widgets/app_scaffold.dart';
 import 'package:thaheen_task/core/extensions/context_extensions.dart';
 import 'package:thaheen_task/core/widgets/app_empty_view.dart';
 import 'package:thaheen_task/core/widgets/app_error_view.dart';
@@ -29,8 +30,8 @@ class _CoursesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(context.l10n.coursesTitle)),
+    return AppScaffold(
+      title: context.l10n.coursesTitle,
       body: BlocBuilder<CoursesCubit, CoursesState>(
         builder: (context, state) {
           return switch (state) {

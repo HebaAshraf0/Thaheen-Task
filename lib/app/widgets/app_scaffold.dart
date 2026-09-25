@@ -1,0 +1,40 @@
+import 'package:flutter/material.dart';
+import 'package:thaheen_task/app/widgets/app_settings_drawer.dart';
+
+class AppScaffold extends StatelessWidget {
+  const AppScaffold({
+    required this.title,
+    required this.body,
+    super.key,
+  });
+
+  final String title;
+  final Widget body;
+
+  @override
+  Widget build(BuildContext context) {
+    final canPop = Navigator.of(context).canPop();
+
+    return Scaffold(
+      drawer: const AppSettingsDrawer(),
+      appBar: AppBar(
+        title: Text(title),
+        leading: canPop ? const BackButton() : null,
+        actions: canPop
+            ? [
+                Builder(
+                  builder: (drawerContext) => IconButton(
+                    tooltip: MaterialLocalizations.of(
+                      drawerContext,
+                    ).openAppDrawerTooltip,
+                    icon: const Icon(Icons.menu_rounded),
+                    onPressed: () => Scaffold.of(drawerContext).openDrawer(),
+                  ),
+                ),
+              ]
+            : null,
+      ),
+      body: body,
+    );
+  }
+}
