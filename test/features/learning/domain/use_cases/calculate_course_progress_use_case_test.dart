@@ -29,9 +29,8 @@ void main() {
     ],
   );
 
-  test(
-    'returns completed lessons divided by total lessons as a percentage',
-    () {
+  group('CalculateCourseProgressUseCase', () {
+    test('returns completed lessons divided by total lessons', () {
       final progress = {
         'lesson-0': _completedProgress('lesson-0'),
         'lesson-1': _completedProgress('lesson-1'),
@@ -45,8 +44,28 @@ void main() {
       );
 
       expect(percentage, 50);
-    },
-  );
+    });
+
+    test('does not count unfinished lessons', () {
+      final percentage = useCase(
+        CalculateCourseProgressUseCaseParam(
+          course: course,
+          progressByLessonId: {
+            'lesson-0': LessonProgress(
+              courseId: 'course',
+              lessonId: 'lesson-0',
+              position: const Duration(seconds: 30),
+              duration: const Duration(minutes: 1),
+              lastWatchedAt: DateTime(2026),
+              isCompleted: false,
+            ),
+          },
+        ),
+      );
+
+      expect(percentage, 0);
+    });
+  });
 }
 
 LessonProgress _completedProgress(String lessonId) {

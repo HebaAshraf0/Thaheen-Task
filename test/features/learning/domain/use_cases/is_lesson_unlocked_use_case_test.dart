@@ -33,7 +33,7 @@ void main() {
     ],
   );
 
-  test('first lesson is unlocked without progress', () {
+  test('unlocks the first lesson without progress', () {
     final isUnlocked = useCase(
       IsLessonUnlockedUseCaseParam(
         course: course,
