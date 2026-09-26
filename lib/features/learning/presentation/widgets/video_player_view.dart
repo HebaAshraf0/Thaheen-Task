@@ -56,7 +56,8 @@ class _VideoPlayerViewState extends State<VideoPlayerView> {
     final value = _videoController.value;
     if (!value.isInitialized || value.hasError) return;
     final currentSecond = value.position.inSeconds;
-    if (currentSecond == _lastReportedSecond || currentSecond.isOdd) return;
+    if (currentSecond == _lastReportedSecond) return;
+    if (!value.isCompleted && currentSecond.isOdd) return;
     _lastReportedSecond = currentSecond;
     widget.onProgressChanged(value.position, value.duration);
   }

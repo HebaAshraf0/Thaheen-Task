@@ -8,6 +8,7 @@ part of 'lesson_progress_model.dart';
 
 LessonProgressModel _$LessonProgressModelFromJson(Map<String, dynamic> json) =>
     LessonProgressModel(
+      courseId: json['courseId'] as String? ?? '',
       lessonId: json['lessonId'] as String,
       positionMilliseconds: (json['positionMilliseconds'] as num).toInt(),
       durationMilliseconds: (json['durationMilliseconds'] as num).toInt(),
@@ -19,6 +20,7 @@ LessonProgressModel _$LessonProgressModelFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$LessonProgressModelToJson(
   LessonProgressModel instance,
 ) => <String, dynamic>{
+  'courseId': instance.courseId,
   'lessonId': instance.lessonId,
   'positionMilliseconds': instance.positionMilliseconds,
   'durationMilliseconds': instance.durationMilliseconds,

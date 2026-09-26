@@ -4,6 +4,7 @@ import 'package:thaheen_task/features/learning/domain/entities/lesson_progress.d
 extension LessonProgressModelMapper on LessonProgressModel {
   LessonProgress toEntity() {
     return LessonProgress(
+      courseId: courseId,
       lessonId: lessonId,
       position: Duration(milliseconds: positionMilliseconds),
       duration: Duration(milliseconds: durationMilliseconds),
@@ -18,6 +19,7 @@ extension LessonProgressModelMapper on LessonProgressModel {
 extension LessonProgressEntityMapper on LessonProgress {
   LessonProgressModel toModel() {
     return LessonProgressModel(
+      courseId: courseId,
       lessonId: lessonId,
       positionMilliseconds: position.inMilliseconds,
       durationMilliseconds: duration.inMilliseconds,

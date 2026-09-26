@@ -14,7 +14,11 @@ void main() {
 
   setUpAll(
     () => registerFallbackValue(
-      LessonProgress.notStarted(lessonId: 'fallback', duration: Duration.zero),
+      LessonProgress.notStarted(
+        courseId: 'fallback-course',
+        lessonId: 'fallback',
+        duration: Duration.zero,
+      ),
     ),
   );
 
@@ -30,6 +34,7 @@ void main() {
     'saves and returns the updated progress supplied by the caller',
     () async {
       final initial = LessonProgress.notStarted(
+        courseId: 'course',
         lessonId: 'lesson',
         duration: const Duration(seconds: 100),
       );
@@ -40,9 +45,7 @@ void main() {
       );
 
       final result = await useCase(
-        SaveLessonProgressUseCaseParam(
-          updatedProgress: updated,
-        ),
+        SaveLessonProgressUseCaseParam(updatedProgress: updated),
       );
 
       final progress = result.getOrElse(
@@ -55,6 +58,7 @@ void main() {
 
   test('does not modify the supplied progress', () async {
     final initial = LessonProgress.notStarted(
+      courseId: 'course',
       lessonId: 'lesson',
       duration: const Duration(seconds: 100),
     );
@@ -65,9 +69,7 @@ void main() {
     );
 
     final result = await useCase(
-      SaveLessonProgressUseCaseParam(
-        updatedProgress: updated,
-      ),
+      SaveLessonProgressUseCaseParam(updatedProgress: updated),
     );
 
     final progress = result.getOrElse(

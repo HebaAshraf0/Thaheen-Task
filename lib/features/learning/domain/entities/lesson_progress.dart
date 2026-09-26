@@ -4,6 +4,7 @@ import 'package:thaheen_task/features/learning/domain/entities/lesson_status.dar
 
 final class LessonProgress extends Equatable {
   const LessonProgress({
+    required this.courseId,
     required this.lessonId,
     required this.position,
     required this.duration,
@@ -12,10 +13,12 @@ final class LessonProgress extends Equatable {
   });
 
   factory LessonProgress.notStarted({
+    required String courseId,
     required String lessonId,
     required Duration duration,
   }) {
     return LessonProgress(
+      courseId: courseId,
       lessonId: lessonId,
       position: Duration.zero,
       duration: duration,
@@ -24,6 +27,7 @@ final class LessonProgress extends Equatable {
     );
   }
 
+  final String courseId;
   final String lessonId;
   final Duration position;
   final Duration duration;
@@ -55,11 +59,14 @@ final class LessonProgress extends Equatable {
     required Duration newDuration,
     required DateTime watchedAt,
   }) {
-    final effectiveDuration =
-        newDuration > Duration.zero ? newDuration : duration;
-    final nonNegativePosition =
-        newPosition.isNegative ? Duration.zero : newPosition;
-    final effectivePosition = effectiveDuration > Duration.zero &&
+    final effectiveDuration = newDuration > Duration.zero
+        ? newDuration
+        : duration;
+    final nonNegativePosition = newPosition.isNegative
+        ? Duration.zero
+        : newPosition;
+    final effectivePosition =
+        effectiveDuration > Duration.zero &&
             nonNegativePosition > effectiveDuration
         ? effectiveDuration
         : nonNegativePosition;
@@ -68,6 +75,7 @@ final class LessonProgress extends Equatable {
         : effectivePosition.inMilliseconds / effectiveDuration.inMilliseconds;
 
     return LessonProgress(
+      courseId: courseId,
       lessonId: lessonId,
       position: effectivePosition,
       duration: effectiveDuration,
@@ -78,10 +86,11 @@ final class LessonProgress extends Equatable {
 
   @override
   List<Object?> get props => [
-        lessonId,
-        position,
-        duration,
-        lastWatchedAt,
-        isCompleted,
-      ];
+    courseId,
+    lessonId,
+    position,
+    duration,
+    lastWatchedAt,
+    isCompleted,
+  ];
 }

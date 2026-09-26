@@ -51,6 +51,7 @@ void main() {
 
 LessonProgress _completedProgress(String lessonId) {
   return LessonProgress(
+    courseId: 'course',
     lessonId: lessonId,
     position: const Duration(minutes: 1),
     duration: const Duration(minutes: 1),

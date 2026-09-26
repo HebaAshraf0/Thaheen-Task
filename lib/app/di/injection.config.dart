@@ -33,24 +33,34 @@ import '../../features/learning/domain/repositories/progress_repository.dart'
     as _i888;
 import '../../features/learning/domain/use_cases/calculate_course_progress_use_case.dart'
     as _i420;
+import '../../features/learning/domain/use_cases/get_active_course_id_use_case.dart'
+    as _i639;
+import '../../features/learning/domain/use_cases/get_all_lesson_progress_use_case.dart'
+    as _i470;
 import '../../features/learning/domain/use_cases/get_continue_watching_use_case.dart'
     as _i232;
 import '../../features/learning/domain/use_cases/get_course_use_case.dart'
     as _i915;
 import '../../features/learning/domain/use_cases/get_courses_use_case.dart'
     as _i14;
+import '../../features/learning/domain/use_cases/get_lesson_progress_use_case.dart'
+    as _i179;
 import '../../features/learning/domain/use_cases/get_next_lesson_use_case.dart'
     as _i169;
 import '../../features/learning/domain/use_cases/is_lesson_unlocked_use_case.dart'
     as _i497;
 import '../../features/learning/domain/use_cases/save_lesson_progress_use_case.dart'
     as _i610;
+import '../../features/learning/presentation/cubits/continue_watching/continue_watching_cubit.dart'
+    as _i286;
 import '../../features/learning/presentation/cubits/course_details/course_details_cubit.dart'
     as _i334;
 import '../../features/learning/presentation/cubits/courses/courses_cubit.dart'
     as _i1065;
 import '../../features/learning/presentation/cubits/lesson_player/lesson_player_cubit.dart'
     as _i273;
+import '../../features/learning/presentation/cubits/progress/progress_cubit.dart'
+    as _i398;
 import '../../features/settings/data/datasources/settings_local_data_source.dart'
     as _i599;
 import '../../features/settings/data/datasources/settings_local_data_source_impl.dart'
@@ -80,6 +90,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i420.CalculateCourseProgressUseCase>(
       () => const _i420.CalculateCourseProgressUseCase(),
     );
+    gh.factory<_i232.GetContinueWatchingUseCase>(
+      () => const _i232.GetContinueWatchingUseCase(),
+    );
     gh.factory<_i169.GetNextLessonUseCase>(
       () => const _i169.GetNextLessonUseCase(),
     );
@@ -90,6 +103,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i460.SharedPreferencesAsync>(
       () => registerModule.sharedPreferences,
     );
+    gh.lazySingleton<_i398.ProgressCubit>(() => _i398.ProgressCubit());
     gh.lazySingleton<_i477.CourseAssetDataSource>(
       () => _i1061.CourseAssetDataSourceImpl(gh<_i281.AssetBundle>()),
     );
@@ -116,8 +130,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i888.ProgressRepository>(
       () => _i997.ProgressRepositoryImpl(gh<_i668.ProgressLocalDataSource>()),
     );
-    gh.factory<_i232.GetContinueWatchingUseCase>(
-      () => _i232.GetContinueWatchingUseCase(gh<_i888.ProgressRepository>()),
+    gh.factory<_i639.GetActiveCourseIdUseCase>(
+      () => _i639.GetActiveCourseIdUseCase(gh<_i888.ProgressRepository>()),
+    );
+    gh.factory<_i470.GetAllLessonProgressUseCase>(
+      () => _i470.GetAllLessonProgressUseCase(gh<_i888.ProgressRepository>()),
+    );
+    gh.factory<_i179.GetLessonProgressUseCase>(
+      () => _i179.GetLessonProgressUseCase(gh<_i888.ProgressRepository>()),
     );
     gh.factory<_i610.SaveLessonProgressUseCase>(
       () => _i610.SaveLessonProgressUseCase(gh<_i888.ProgressRepository>()),
@@ -132,13 +152,10 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i14.GetCoursesUseCase(gh<_i166.CourseRepository>()),
     );
     gh.factory<_i1065.CoursesCubit>(
-      () => _i1065.CoursesCubit(gh<_i14.GetCoursesUseCase>()),
-    );
-    gh.factory<_i334.CourseDetailsCubit>(
-      () => _i334.CourseDetailsCubit(
-        gh<_i915.GetCourseUseCase>(),
-        gh<_i169.GetNextLessonUseCase>(),
-        gh<_i497.IsLessonUnlockedUseCase>(),
+      () => _i1065.CoursesCubit(
+        gh<_i14.GetCoursesUseCase>(),
+        gh<_i470.GetAllLessonProgressUseCase>(),
+        gh<_i420.CalculateCourseProgressUseCase>(),
       ),
     );
     gh.factory<_i684.AppSettingsCubit>(
@@ -148,8 +165,27 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i993.SaveLanguageUseCase>(),
       ),
     );
+    gh.factory<_i334.CourseDetailsCubit>(
+      () => _i334.CourseDetailsCubit(
+        gh<_i915.GetCourseUseCase>(),
+        gh<_i470.GetAllLessonProgressUseCase>(),
+        gh<_i169.GetNextLessonUseCase>(),
+        gh<_i497.IsLessonUnlockedUseCase>(),
+      ),
+    );
+    gh.factory<_i286.ContinueWatchingCubit>(
+      () => _i286.ContinueWatchingCubit(
+        gh<_i470.GetAllLessonProgressUseCase>(),
+        gh<_i639.GetActiveCourseIdUseCase>(),
+        gh<_i915.GetCourseUseCase>(),
+        gh<_i232.GetContinueWatchingUseCase>(),
+      ),
+    );
     gh.factory<_i273.LessonPlayerCubit>(
-      () => _i273.LessonPlayerCubit(gh<_i610.SaveLessonProgressUseCase>()),
+      () => _i273.LessonPlayerCubit(
+        gh<_i179.GetLessonProgressUseCase>(),
+        gh<_i610.SaveLessonProgressUseCase>(),
+      ),
     );
     return this;
   }

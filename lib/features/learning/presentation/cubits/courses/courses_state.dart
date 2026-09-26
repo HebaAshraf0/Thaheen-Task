@@ -1,39 +1,16 @@
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:thaheen_task/features/learning/domain/entities/course.dart';
 
-sealed class CoursesState extends Equatable {
-  const CoursesState();
+part 'courses_state.freezed.dart';
 
-  @override
-  List<Object?> get props => [];
-}
-
-final class CoursesInitial extends CoursesState {
-  const CoursesInitial();
-}
-
-final class CoursesLoading extends CoursesState {
-  const CoursesLoading();
-}
-
-final class CoursesEmpty extends CoursesState {
-  const CoursesEmpty();
-}
-
-final class CoursesLoaded extends CoursesState {
-  const CoursesLoaded(this.courses);
-
-  final List<Course> courses;
-
-  @override
-  List<Object?> get props => [courses];
-}
-
-final class CoursesError extends CoursesState {
-  const CoursesError(this.message);
-
-  final String message;
-
-  @override
-  List<Object?> get props => [message];
+@freezed
+sealed class CoursesState with _$CoursesState {
+  const factory CoursesState.initial() = CoursesInitial;
+  const factory CoursesState.loading() = CoursesLoading;
+  const factory CoursesState.empty() = CoursesEmpty;
+  const factory CoursesState.loaded(
+    List<Course> courses,
+    Map<String, double> progressByCourseId,
+  ) = CoursesLoaded;
+  const factory CoursesState.error(String message) = CoursesError;
 }

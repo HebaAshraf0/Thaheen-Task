@@ -21,7 +21,10 @@
   "notStarted": "لم يبدأ",
   "inProgress": "قيد التقدم",
   "completed": "مكتمل",
+  "locked": "مغلق",
   "lockedLessonMessage": "أكمل الدرس السابق لفتح هذا الدرس",
   "videoUnavailable": "تعذر تشغيل ملف الفيديو",
+  "currentLesson": "الدرس الحالي",
+  "nextLesson": "الدرس التالي",
   "screenComingSoon": "تم تجهيز بنية هذه الشاشة للتنفيذ"
 }

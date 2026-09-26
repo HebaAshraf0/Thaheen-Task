@@ -12,7 +12,7 @@ final class AppSettingsCubit extends Cubit<AppSettingsState> {
     this._getAppSettings,
     this._saveThemePreference,
     this._saveLanguage,
-  ) : super(const AppSettingsState.initial());
+  ) : super(const AppSettingsState());
 
   final GetAppSettingsUseCase _getAppSettings;
   final SaveThemePreferenceUseCase _saveThemePreference;
@@ -27,8 +27,9 @@ final class AppSettingsCubit extends Cubit<AppSettingsState> {
   }
 
   Future<void> setDarkMode({required bool isDark}) async {
-    final preference =
-        isDark ? AppThemePreference.dark : AppThemePreference.light;
+    final preference = isDark
+        ? AppThemePreference.dark
+        : AppThemePreference.light;
     final result = await _saveThemePreference(
       SaveThemePreferenceUseCaseParam(preference: preference),
     );
@@ -44,9 +45,6 @@ final class AppSettingsCubit extends Cubit<AppSettingsState> {
     final result = await _saveLanguage(
       SaveLanguageUseCaseParam(language: language),
     );
-    result.fold(
-      (_) {},
-      (_) => emit(state.copyWith(language: language)),
-    );
+    result.fold((_) {}, (_) => emit(state.copyWith(language: language)));
   }
 }

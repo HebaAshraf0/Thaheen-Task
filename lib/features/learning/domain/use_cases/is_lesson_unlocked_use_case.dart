@@ -15,6 +15,13 @@ final class IsLessonUnlockedUseCase {
     if (lessonIndex < 0) return false;
     if (lessonIndex == 0) return true;
 
+    final lessonProgress = param.progressByLessonId[param.lessonId];
+    if (lessonProgress != null &&
+        (lessonProgress.position > Duration.zero ||
+            lessonProgress.isCompleted)) {
+      return true;
+    }
+
     final previousLesson = lessons[lessonIndex - 1];
     return param.progressByLessonId[previousLesson.id]?.isCompleted ?? false;
   }

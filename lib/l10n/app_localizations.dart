@@ -224,6 +224,12 @@ abstract class AppLocalizations {
   /// **'مكتمل'**
   String get completed;
 
+  /// No description provided for @locked.
+  ///
+  /// In ar, this message translates to:
+  /// **'مغلق'**
+  String get locked;
+
   /// No description provided for @lockedLessonMessage.
   ///
   /// In ar, this message translates to:
@@ -235,6 +241,18 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'تعذر تشغيل ملف الفيديو'**
   String get videoUnavailable;
+
+  /// No description provided for @currentLesson.
+  ///
+  /// In ar, this message translates to:
+  /// **'الدرس الحالي'**
+  String get currentLesson;
+
+  /// No description provided for @nextLesson.
+  ///
+  /// In ar, this message translates to:
+  /// **'الدرس التالي'**
+  String get nextLesson;
 
   /// No description provided for @screenComingSoon.
   ///

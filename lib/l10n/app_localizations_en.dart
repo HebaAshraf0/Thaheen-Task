@@ -83,11 +83,20 @@ class AppLocalizationsEn extends AppLocalizations {
   String get completed => 'Completed';
 
   @override
+  String get locked => 'Locked';
+
+  @override
   String get lockedLessonMessage =>
       'Complete the previous lesson to unlock this lesson';
 
   @override
   String get videoUnavailable => 'The video file could not be played';
+
+  @override
+  String get currentLesson => 'Current lesson';
+
+  @override
+  String get nextLesson => 'Next lesson';
 
   @override
   String get screenComingSoon =>

@@ -1,30 +1,14 @@
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:thaheen_task/features/learning/domain/entities/lesson_progress.dart';
 
-final class LessonPlayerState extends Equatable {
-  const LessonPlayerState({
-    this.progress,
-    this.isSaving = false,
-    this.errorMessage,
-  });
+part 'lesson_player_state.freezed.dart';
 
-  final LessonProgress? progress;
-  final bool isSaving;
-  final String? errorMessage;
-
-  LessonPlayerState copyWith({
+@freezed
+abstract class LessonPlayerState with _$LessonPlayerState {
+  const factory LessonPlayerState({
     LessonProgress? progress,
-    bool? isSaving,
+    LessonProgress? latestSavedProgress,
+    @Default(false) bool isSaving,
     String? errorMessage,
-    bool clearError = false,
-  }) {
-    return LessonPlayerState(
-      progress: progress ?? this.progress,
-      isSaving: isSaving ?? this.isSaving,
-      errorMessage: clearError ? null : errorMessage ?? this.errorMessage,
-    );
-  }
-
-  @override
-  List<Object?> get props => [progress, isSaving, errorMessage];
+  }) = _LessonPlayerState;
 }

@@ -5,33 +5,42 @@ import 'package:thaheen_task/core/extensions/context_extensions.dart';
 import 'package:thaheen_task/features/learning/domain/entities/lesson_status.dart';
 
 class LessonStatusBadge extends StatelessWidget {
-  const LessonStatusBadge({required this.status, super.key});
+  const LessonStatusBadge({
+    required this.status,
+    required this.isLocked,
+    super.key,
+  });
 
   final LessonStatus status;
+  final bool isLocked;
 
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-    final semanticColors = Theme.of(
-      context,
-    ).extension<AppSemanticColors>()!;
-    final (label, foreground, background) = switch (status) {
-      LessonStatus.notStarted => (
-          context.l10n.notStarted,
-          colorScheme.onSurfaceVariant,
-          colorScheme.surfaceContainerHighest,
-        ),
-      LessonStatus.inProgress => (
-          context.l10n.inProgress,
-          semanticColors.warning,
-          semanticColors.warningContainer,
-        ),
-      LessonStatus.completed => (
-          context.l10n.completed,
-          semanticColors.success,
-          semanticColors.successContainer,
-        ),
-    };
+    final semanticColors = Theme.of(context).extension<AppSemanticColors>()!;
+    final (label, foreground, background) = isLocked
+        ? (
+            context.l10n.locked,
+            colorScheme.onSurfaceVariant,
+            colorScheme.surfaceContainerHighest,
+          )
+        : switch (status) {
+            LessonStatus.notStarted => (
+              context.l10n.notStarted,
+              colorScheme.primary,
+              colorScheme.primaryContainer,
+            ),
+            LessonStatus.inProgress => (
+              context.l10n.inProgress,
+              semanticColors.warning,
+              semanticColors.warningContainer,
+            ),
+            LessonStatus.completed => (
+              context.l10n.completed,
+              semanticColors.success,
+              semanticColors.successContainer,
+            ),
+          };
     return DecoratedBox(
       decoration: BoxDecoration(
         color: background,

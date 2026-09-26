@@ -1,39 +1,17 @@
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:thaheen_task/features/learning/domain/entities/course.dart';
+import 'package:thaheen_task/features/learning/domain/entities/lesson_progress.dart';
 
-sealed class CourseDetailsState extends Equatable {
-  const CourseDetailsState();
+part 'course_details_state.freezed.dart';
 
-  @override
-  List<Object?> get props => [];
-}
-
-final class CourseDetailsInitial extends CourseDetailsState {
-  const CourseDetailsInitial();
-}
-
-final class CourseDetailsLoading extends CourseDetailsState {
-  const CourseDetailsLoading();
-}
-
-final class CourseDetailsLoaded extends CourseDetailsState {
-  const CourseDetailsLoaded(this.course);
-
-  final Course course;
-
-  @override
-  List<Object?> get props => [course];
-}
-
-final class CourseDetailsNotFound extends CourseDetailsState {
-  const CourseDetailsNotFound();
-}
-
-final class CourseDetailsError extends CourseDetailsState {
-  const CourseDetailsError(this.message);
-
-  final String message;
-
-  @override
-  List<Object?> get props => [message];
+@freezed
+sealed class CourseDetailsState with _$CourseDetailsState {
+  const factory CourseDetailsState.initial() = CourseDetailsInitial;
+  const factory CourseDetailsState.loading() = CourseDetailsLoading;
+  const factory CourseDetailsState.loaded(
+    Course course,
+    Map<String, LessonProgress> progressByLessonId,
+  ) = CourseDetailsLoaded;
+  const factory CourseDetailsState.notFound() = CourseDetailsNotFound;
+  const factory CourseDetailsState.error(String message) = CourseDetailsError;
 }

@@ -48,6 +48,9 @@ dependencies:
   # Annotations used to generate JSON serialization for data models.
   json_annotation: ^4.12.0
 
+  # Immutable Cubit states and generated union matching APIs.
+  freezed_annotation: ^3.1.0
+
   # Adapts dimensions, spacing, radii, and typography to the screen size.
   flutter_screenutil: ^5.9.3
 
@@ -67,6 +70,9 @@ dev_dependencies:
 
   # Generates fromJson and toJson implementations for data models.
   json_serializable: ^6.14.1
+
+  # Generates Freezed state classes, copyWith, equality, map, and when APIs.
+  freezed: ^3.2.5
 
   # Test helpers for asserting Bloc and Cubit state sequences.
   bloc_test: ^10.0.0

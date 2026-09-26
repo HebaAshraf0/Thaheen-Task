@@ -86,10 +86,19 @@ class AppLocalizationsAr extends AppLocalizations {
   String get completed => 'مكتمل';
 
   @override
+  String get locked => 'مغلق';
+
+  @override
   String get lockedLessonMessage => 'أكمل الدرس السابق لفتح هذا الدرس';
 
   @override
   String get videoUnavailable => 'تعذر تشغيل ملف الفيديو';
+
+  @override
+  String get currentLesson => 'الدرس الحالي';
+
+  @override
+  String get nextLesson => 'الدرس التالي';
 
   @override
   String get screenComingSoon => 'تم تجهيز بنية هذه الشاشة للتنفيذ';

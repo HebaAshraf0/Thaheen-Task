@@ -21,7 +21,10 @@
   "notStarted": "Not started",
   "inProgress": "In progress",
   "completed": "Completed",
+  "locked": "Locked",
   "lockedLessonMessage": "Complete the previous lesson to unlock this lesson",
   "videoUnavailable": "The video file could not be played",
+  "currentLesson": "Current lesson",
+  "nextLesson": "Next lesson",
   "screenComingSoon": "This screen structure is ready for implementation"
 }

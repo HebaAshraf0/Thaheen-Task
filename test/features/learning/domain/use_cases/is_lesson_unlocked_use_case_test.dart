@@ -59,6 +59,7 @@ void main() {
         lessonId: secondLesson.id,
         progressByLessonId: {
           firstLesson.id: LessonProgress(
+            courseId: course.id,
             lessonId: firstLesson.id,
             position: firstLesson.duration,
             duration: firstLesson.duration,
@@ -71,5 +72,47 @@ void main() {
 
     expect(locked, isFalse);
     expect(unlocked, isTrue);
+  });
+
+  test('an in-progress lesson remains unlocked', () {
+    final isUnlocked = useCase(
+      IsLessonUnlockedUseCaseParam(
+        course: course,
+        lessonId: secondLesson.id,
+        progressByLessonId: {
+          secondLesson.id: LessonProgress(
+            courseId: course.id,
+            lessonId: secondLesson.id,
+            position: const Duration(seconds: 20),
+            duration: secondLesson.duration,
+            lastWatchedAt: DateTime(2026),
+            isCompleted: false,
+          ),
+        },
+      ),
+    );
+
+    expect(isUnlocked, isTrue);
+  });
+
+  test('a completed lesson remains unlocked', () {
+    final isUnlocked = useCase(
+      IsLessonUnlockedUseCaseParam(
+        course: course,
+        lessonId: secondLesson.id,
+        progressByLessonId: {
+          secondLesson.id: LessonProgress(
+            courseId: course.id,
+            lessonId: secondLesson.id,
+            position: secondLesson.duration,
+            duration: secondLesson.duration,
+            lastWatchedAt: DateTime(2026),
+            isCompleted: true,
+          ),
+        },
+      ),
+    );
+
+    expect(isUnlocked, isTrue);
   });
 }

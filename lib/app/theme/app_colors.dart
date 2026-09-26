@@ -66,17 +66,17 @@ final class AppSemanticColors extends ThemeExtension<AppSemanticColors> {
   });
 
   static const light = AppSemanticColors(
-    success: Color(0xFF4A89AD),
-    successContainer: Color(0xFFE4F5FD),
-    warning: Color(0xFF667A86),
-    warningContainer: Color(0xFFEDF2F5),
+    success: Color(0xFF287A55),
+    successContainer: Color(0xFFDDF4E8),
+    warning: Color(0xFF9A6700),
+    warningContainer: Color(0xFFFFF0C2),
   );
 
   static const dark = AppSemanticColors(
-    success: Color(0xFF79D3F9),
-    successContainer: Color(0xFF123E52),
-    warning: Color(0xFFB9C7CE),
-    warningContainer: Color(0xFF2A3D47),
+    success: Color(0xFF6BD7A3),
+    successContainer: Color(0xFF123D2B),
+    warning: Color(0xFFFFD166),
+    warningContainer: Color(0xFF4A3500),
   );
 
   final Color success;
@@ -100,10 +100,7 @@ final class AppSemanticColors extends ThemeExtension<AppSemanticColors> {
   }
 
   @override
-  AppSemanticColors lerp(
-    covariant AppSemanticColors? other,
-    double t,
-  ) {
+  AppSemanticColors lerp(covariant AppSemanticColors? other, double t) {
     if (other == null) return this;
     return AppSemanticColors(
       success: Color.lerp(success, other.success, t)!,
