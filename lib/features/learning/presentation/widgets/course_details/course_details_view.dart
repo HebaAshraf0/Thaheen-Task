@@ -13,6 +13,7 @@ import 'package:thaheen_task/features/learning/presentation/cubits/course_detail
 import 'package:thaheen_task/features/learning/presentation/cubits/course_details/course_details_state.dart';
 import 'package:thaheen_task/features/learning/presentation/widgets/course_details/course_section_card.dart';
 import 'package:thaheen_task/features/learning/presentation/widgets/course_details/course_summary.dart';
+import 'package:thaheen_task/features/learning/presentation/widgets/course_details/empty_course_view.dart';
 
 class CourseDetailsView extends StatelessWidget {
   const CourseDetailsView({required this.courseId, super.key});
@@ -29,6 +30,7 @@ class CourseDetailsView extends StatelessWidget {
           return state.when(
             initial: () => const AppLoadingView(),
             loading: () => const AppLoadingView(),
+            empty: (course) => EmptyCourseView(course: course),
             notFound: () => AppEmptyView(message: context.l10n.courseNotFound),
             error: (message) => AppErrorView(
               message: message,

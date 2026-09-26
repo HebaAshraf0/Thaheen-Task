@@ -55,13 +55,14 @@ extension CourseDetailsStatePatterns on CourseDetailsState {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( CourseDetailsInitial value)?  initial,TResult Function( CourseDetailsLoading value)?  loading,TResult Function( CourseDetailsLoaded value)?  loaded,TResult Function( CourseDetailsNotFound value)?  notFound,TResult Function( CourseDetailsError value)?  error,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( CourseDetailsInitial value)?  initial,TResult Function( CourseDetailsLoading value)?  loading,TResult Function( CourseDetailsLoaded value)?  loaded,TResult Function( CourseDetailsEmpty value)?  empty,TResult Function( CourseDetailsNotFound value)?  notFound,TResult Function( CourseDetailsError value)?  error,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case CourseDetailsInitial() when initial != null:
 return initial(_that);case CourseDetailsLoading() when loading != null:
 return loading(_that);case CourseDetailsLoaded() when loaded != null:
-return loaded(_that);case CourseDetailsNotFound() when notFound != null:
+return loaded(_that);case CourseDetailsEmpty() when empty != null:
+return empty(_that);case CourseDetailsNotFound() when notFound != null:
 return notFound(_that);case CourseDetailsError() when error != null:
 return error(_that);case _:
   return orElse();
@@ -81,13 +82,14 @@ return error(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( CourseDetailsInitial value)  initial,required TResult Function( CourseDetailsLoading value)  loading,required TResult Function( CourseDetailsLoaded value)  loaded,required TResult Function( CourseDetailsNotFound value)  notFound,required TResult Function( CourseDetailsError value)  error,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( CourseDetailsInitial value)  initial,required TResult Function( CourseDetailsLoading value)  loading,required TResult Function( CourseDetailsLoaded value)  loaded,required TResult Function( CourseDetailsEmpty value)  empty,required TResult Function( CourseDetailsNotFound value)  notFound,required TResult Function( CourseDetailsError value)  error,}){
 final _that = this;
 switch (_that) {
 case CourseDetailsInitial():
 return initial(_that);case CourseDetailsLoading():
 return loading(_that);case CourseDetailsLoaded():
-return loaded(_that);case CourseDetailsNotFound():
+return loaded(_that);case CourseDetailsEmpty():
+return empty(_that);case CourseDetailsNotFound():
 return notFound(_that);case CourseDetailsError():
 return error(_that);}
 }
@@ -103,13 +105,14 @@ return error(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( CourseDetailsInitial value)?  initial,TResult? Function( CourseDetailsLoading value)?  loading,TResult? Function( CourseDetailsLoaded value)?  loaded,TResult? Function( CourseDetailsNotFound value)?  notFound,TResult? Function( CourseDetailsError value)?  error,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( CourseDetailsInitial value)?  initial,TResult? Function( CourseDetailsLoading value)?  loading,TResult? Function( CourseDetailsLoaded value)?  loaded,TResult? Function( CourseDetailsEmpty value)?  empty,TResult? Function( CourseDetailsNotFound value)?  notFound,TResult? Function( CourseDetailsError value)?  error,}){
 final _that = this;
 switch (_that) {
 case CourseDetailsInitial() when initial != null:
 return initial(_that);case CourseDetailsLoading() when loading != null:
 return loading(_that);case CourseDetailsLoaded() when loaded != null:
-return loaded(_that);case CourseDetailsNotFound() when notFound != null:
+return loaded(_that);case CourseDetailsEmpty() when empty != null:
+return empty(_that);case CourseDetailsNotFound() when notFound != null:
 return notFound(_that);case CourseDetailsError() when error != null:
 return error(_that);case _:
   return null;
@@ -128,12 +131,13 @@ return error(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( Course course,  Map<String, LessonProgress> progressByLessonId)?  loaded,TResult Function()?  notFound,TResult Function( String message)?  error,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( Course course,  Map<String, LessonProgress> progressByLessonId)?  loaded,TResult Function( Course course)?  empty,TResult Function()?  notFound,TResult Function( String message)?  error,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case CourseDetailsInitial() when initial != null:
 return initial();case CourseDetailsLoading() when loading != null:
 return loading();case CourseDetailsLoaded() when loaded != null:
-return loaded(_that.course,_that.progressByLessonId);case CourseDetailsNotFound() when notFound != null:
+return loaded(_that.course,_that.progressByLessonId);case CourseDetailsEmpty() when empty != null:
+return empty(_that.course);case CourseDetailsNotFound() when notFound != null:
 return notFound();case CourseDetailsError() when error != null:
 return error(_that.message);case _:
   return orElse();
@@ -153,12 +157,13 @@ return error(_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( Course course,  Map<String, LessonProgress> progressByLessonId)  loaded,required TResult Function()  notFound,required TResult Function( String message)  error,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( Course course,  Map<String, LessonProgress> progressByLessonId)  loaded,required TResult Function( Course course)  empty,required TResult Function()  notFound,required TResult Function( String message)  error,}) {final _that = this;
 switch (_that) {
 case CourseDetailsInitial():
 return initial();case CourseDetailsLoading():
 return loading();case CourseDetailsLoaded():
-return loaded(_that.course,_that.progressByLessonId);case CourseDetailsNotFound():
+return loaded(_that.course,_that.progressByLessonId);case CourseDetailsEmpty():
+return empty(_that.course);case CourseDetailsNotFound():
 return notFound();case CourseDetailsError():
 return error(_that.message);}
 }
@@ -174,12 +179,13 @@ return error(_that.message);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( Course course,  Map<String, LessonProgress> progressByLessonId)?  loaded,TResult? Function()?  notFound,TResult? Function( String message)?  error,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( Course course,  Map<String, LessonProgress> progressByLessonId)?  loaded,TResult? Function( Course course)?  empty,TResult? Function()?  notFound,TResult? Function( String message)?  error,}) {final _that = this;
 switch (_that) {
 case CourseDetailsInitial() when initial != null:
 return initial();case CourseDetailsLoading() when loading != null:
 return loading();case CourseDetailsLoaded() when loaded != null:
-return loaded(_that.course,_that.progressByLessonId);case CourseDetailsNotFound() when notFound != null:
+return loaded(_that.course,_that.progressByLessonId);case CourseDetailsEmpty() when empty != null:
+return empty(_that.course);case CourseDetailsNotFound() when notFound != null:
 return notFound();case CourseDetailsError() when error != null:
 return error(_that.message);case _:
   return null;
@@ -321,6 +327,72 @@ class _$CourseDetailsLoadedCopyWithImpl<$Res>
 null == course ? _self.course : course // ignore: cast_nullable_to_non_nullable
 as Course,null == progressByLessonId ? _self._progressByLessonId : progressByLessonId // ignore: cast_nullable_to_non_nullable
 as Map<String, LessonProgress>,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class CourseDetailsEmpty implements CourseDetailsState {
+  const CourseDetailsEmpty(this.course);
+  
+
+ final  Course course;
+
+/// Create a copy of CourseDetailsState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CourseDetailsEmptyCopyWith<CourseDetailsEmpty> get copyWith => _$CourseDetailsEmptyCopyWithImpl<CourseDetailsEmpty>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CourseDetailsEmpty&&(identical(other.course, course) || other.course == course));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,course);
+
+@override
+String toString() {
+  return 'CourseDetailsState.empty(course: $course)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $CourseDetailsEmptyCopyWith<$Res> implements $CourseDetailsStateCopyWith<$Res> {
+  factory $CourseDetailsEmptyCopyWith(CourseDetailsEmpty value, $Res Function(CourseDetailsEmpty) _then) = _$CourseDetailsEmptyCopyWithImpl;
+@useResult
+$Res call({
+ Course course
+});
+
+
+
+
+}
+/// @nodoc
+class _$CourseDetailsEmptyCopyWithImpl<$Res>
+    implements $CourseDetailsEmptyCopyWith<$Res> {
+  _$CourseDetailsEmptyCopyWithImpl(this._self, this._then);
+
+  final CourseDetailsEmpty _self;
+  final $Res Function(CourseDetailsEmpty) _then;
+
+/// Create a copy of CourseDetailsState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? course = null,}) {
+  return _then(CourseDetailsEmpty(
+null == course ? _self.course : course // ignore: cast_nullable_to_non_nullable
+as Course,
   ));
 }
 

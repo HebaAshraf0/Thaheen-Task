@@ -50,6 +50,10 @@ final class CourseDetailsCubit extends Cubit<CourseDetailsState> {
           emit(const CourseDetailsState.notFound());
           return;
         }
+        if (course.lessons.isEmpty) {
+          emit(CourseDetailsState.empty(course));
+          return;
+        }
 
         final progressResult = await _getAllLessonProgress(
           const GetAllLessonProgressUseCaseParam(),

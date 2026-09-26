@@ -9,6 +9,7 @@ import 'package:thaheen_task/features/learning/presentation/cubits/course_detail
 import 'package:thaheen_task/features/learning/presentation/cubits/lesson_player/lesson_player_cubit.dart';
 import 'package:thaheen_task/features/learning/presentation/cubits/lesson_player/lesson_player_state.dart';
 import 'package:thaheen_task/features/learning/presentation/widgets/lesson_player/current_lesson_card.dart';
+import 'package:thaheen_task/features/learning/presentation/widgets/lesson_player/lesson_player_error_banner.dart';
 import 'package:thaheen_task/features/learning/presentation/widgets/lesson_player/next_lesson_button.dart';
 import 'package:thaheen_task/features/learning/presentation/widgets/video_player_view.dart';
 
@@ -51,6 +52,10 @@ class LessonPlayerView extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
+                      if (state.errorMessage case final message?) ...[
+                        LessonPlayerErrorBanner(message: message),
+                        SizedBox(height: 12.h),
+                      ],
                       CurrentLessonCard(lesson: lesson),
                       SizedBox(height: 12.h),
                       Card(

@@ -12,6 +12,7 @@
   "courseDetailsTitle": "تفاصيل الدورة",
   "lessonPlayerTitle": "مشغل الدرس",
   "noCourses": "لا توجد دورات متاحة حاليًا",
+  "noLessons": "لا توجد دروس متاحة في هذه الدورة حتى الآن",
   "courseNotFound": "تعذر العثور على هذه الدورة",
   "loadError": "تعذر تحميل المحتوى",
   "retry": "إعادة المحاولة",
@@ -24,6 +25,9 @@
   "locked": "مغلق",
   "lockedLessonMessage": "أكمل الدرس السابق لفتح هذا الدرس",
   "videoUnavailable": "تعذر تشغيل ملف الفيديو",
+  "playbackSpeed": "سرعة التشغيل",
+  "subtitles": "الترجمة",
+  "cancel": "إلغاء",
   "currentLesson": "الدرس الحالي",
   "nextLesson": "الدرس التالي",
   "screenComingSoon": "تم تجهيز بنية هذه الشاشة للتنفيذ"

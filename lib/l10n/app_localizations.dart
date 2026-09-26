@@ -170,6 +170,12 @@ abstract class AppLocalizations {
   /// **'لا توجد دورات متاحة حاليًا'**
   String get noCourses;
 
+  /// No description provided for @noLessons.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا توجد دروس متاحة في هذه الدورة حتى الآن'**
+  String get noLessons;
+
   /// No description provided for @courseNotFound.
   ///
   /// In ar, this message translates to:
@@ -241,6 +247,24 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'تعذر تشغيل ملف الفيديو'**
   String get videoUnavailable;
+
+  /// No description provided for @playbackSpeed.
+  ///
+  /// In ar, this message translates to:
+  /// **'سرعة التشغيل'**
+  String get playbackSpeed;
+
+  /// No description provided for @subtitles.
+  ///
+  /// In ar, this message translates to:
+  /// **'الترجمة'**
+  String get subtitles;
+
+  /// No description provided for @cancel.
+  ///
+  /// In ar, this message translates to:
+  /// **'إلغاء'**
+  String get cancel;
 
   /// No description provided for @currentLesson.
   ///

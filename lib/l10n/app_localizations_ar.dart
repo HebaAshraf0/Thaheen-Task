@@ -45,6 +45,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get noCourses => 'لا توجد دورات متاحة حاليًا';
 
   @override
+  String get noLessons => 'لا توجد دروس متاحة في هذه الدورة حتى الآن';
+
+  @override
   String get courseNotFound => 'تعذر العثور على هذه الدورة';
 
   @override
@@ -93,6 +96,15 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get videoUnavailable => 'تعذر تشغيل ملف الفيديو';
+
+  @override
+  String get playbackSpeed => 'سرعة التشغيل';
+
+  @override
+  String get subtitles => 'الترجمة';
+
+  @override
+  String get cancel => 'إلغاء';
 
   @override
   String get currentLesson => 'الدرس الحالي';

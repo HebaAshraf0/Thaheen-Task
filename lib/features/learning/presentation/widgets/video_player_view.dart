@@ -22,7 +22,7 @@ class VideoPlayerView extends StatefulWidget {
 class _VideoPlayerViewState extends State<VideoPlayerView> {
   late final VideoPlayerController _videoController;
   ChewieController? _chewieController;
-  Object? _initializationError;
+  Object? _playbackError;
   int _lastReportedSecond = -1;
 
   @override
@@ -35,26 +35,47 @@ class _VideoPlayerViewState extends State<VideoPlayerView> {
   Future<void> _initialize() async {
     try {
       await _videoController.initialize();
+      if (!mounted) return;
+
       if (widget.initialPosition > Duration.zero) {
         await _videoController.seekTo(widget.initialPosition);
+        if (!mounted) return;
       }
       _videoController.addListener(_reportProgress);
-      _chewieController = ChewieController(
-        videoPlayerController: _videoController,
-        allowFullScreen: true,
-        allowPlaybackSpeedChanging: true,
-        playbackSpeeds: const [1, 1.25, 1.5, 2],
-        allowedScreenSleep: false,
-      );
+      _configureChewieController();
     } catch (error) {
-      _initializationError = error;
+      if (!mounted) return;
+      _playbackError = error;
     }
-    if (mounted) setState(() {});
+    setState(() {});
+  }
+
+  void _configureChewieController() {
+    final previousController = _chewieController;
+    _chewieController = ChewieController(
+      videoPlayerController: _videoController,
+      optionsTranslation: OptionsTranslation(
+        playbackSpeedButtonText: context.l10n.playbackSpeed,
+        subtitlesButtonText: context.l10n.subtitles,
+        cancelButtonText: context.l10n.cancel,
+      ),
+      allowFullScreen: true,
+      allowPlaybackSpeedChanging: true,
+      playbackSpeeds: const [1, 1.25, 1.5, 2],
+      allowedScreenSleep: false,
+    );
+    previousController?.dispose();
   }
 
   void _reportProgress() {
     final value = _videoController.value;
-    if (!value.isInitialized || value.hasError) return;
+    if (value.hasError) {
+      if (_playbackError == null && mounted) {
+        setState(() => _playbackError = value.errorDescription ?? value);
+      }
+      return;
+    }
+    if (!value.isInitialized) return;
     final currentSecond = value.position.inSeconds;
     if (currentSecond == _lastReportedSecond) return;
     if (!value.isCompleted && currentSecond.isOdd) return;
@@ -72,7 +93,7 @@ class _VideoPlayerViewState extends State<VideoPlayerView> {
 
   @override
   Widget build(BuildContext context) {
-    if (_initializationError != null) {
+    if (_playbackError != null) {
       return AspectRatio(
         aspectRatio: 16 / 9,
         child: ColoredBox(

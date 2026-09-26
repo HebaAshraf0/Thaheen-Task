@@ -12,6 +12,7 @@
   "courseDetailsTitle": "Course details",
   "lessonPlayerTitle": "Lesson player",
   "noCourses": "No courses are currently available",
+  "noLessons": "No lessons are available in this course yet",
   "courseNotFound": "This course could not be found",
   "loadError": "The content could not be loaded",
   "retry": "Retry",
@@ -24,6 +25,9 @@
   "locked": "Locked",
   "lockedLessonMessage": "Complete the previous lesson to unlock this lesson",
   "videoUnavailable": "The video file could not be played",
+  "playbackSpeed": "Playback speed",
+  "subtitles": "Subtitles",
+  "cancel": "Cancel",
   "currentLesson": "Current lesson",
   "nextLesson": "Next lesson",
   "screenComingSoon": "This screen structure is ready for implementation"

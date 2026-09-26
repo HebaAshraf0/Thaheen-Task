@@ -12,6 +12,7 @@ sealed class CourseDetailsState with _$CourseDetailsState {
     Course course,
     Map<String, LessonProgress> progressByLessonId,
   ) = CourseDetailsLoaded;
+  const factory CourseDetailsState.empty(Course course) = CourseDetailsEmpty;
   const factory CourseDetailsState.notFound() = CourseDetailsNotFound;
   const factory CourseDetailsState.error(String message) = CourseDetailsError;
 }

@@ -31,6 +31,7 @@ class LessonLoader extends StatelessWidget {
           return state.when(
             initial: () => const AppLoadingView(),
             loading: () => const AppLoadingView(),
+            empty: (_) => AppEmptyView(message: context.l10n.noLessons),
             notFound: () => AppEmptyView(message: context.l10n.courseNotFound),
             error: (message) => AppErrorView(
               message: message,
